@@ -30,3 +30,8 @@ proc angle*(v: Vector2): float32 = return arctan2(v.y, v.x)
 proc len2*(v: Vector2): float32 = v.x * v.x + v.y * v.y
 proc len*(v: Vector2): float32 = v.len2.sqrt
 proc nor*(v: Vector2): Vector2 = v / v.len
+
+# Handles lowercase chars, maps them to the same enum value
+proc toKeyboardKey*(x: int): KeyboardKey =
+  if x >= 97 and x <= 122: (x - 32).KeyboardKey
+  else: x.KeyboardKey
