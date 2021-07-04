@@ -1,15 +1,24 @@
 ## Extra vector2 maths & utils. Included by raylib.nim, don't import this module.
 
+import glm
 import math
 import options
 
 proc v2*(x: float32, y: float32): Vector2 = return Vector2(x: x, y: y)
+proc v2*(v: Vec2f): Vector2 = return Vector2(x: v.x, y: v.y)
+proc v2*(v: Vector2): Vector2 = v
+
+proc vec2f*(v: Vector2): Vec2f = vec2f(v.x, v.y)
 
 # vec*vec
-proc `+`*(l: Vector2, r: Vector2): Vector2 = return Vector2(x: l.x + r.x, y: l.y + r.y)
-proc `-`*(l: Vector2, r: Vector2): Vector2 = return Vector2(x: l.x - r.x, y: l.y - r.y)
-proc `*`*(l: Vector2, r: Vector2): Vector2 = return Vector2(x: l.x * r.x, y: l.y * r.y)
-proc `/`*(l: Vector2, r: Vector2): Vector2 = return Vector2(x: l.x / r.x, y: l.y / r.y)
+proc `+`*(l: Vector2, r: Vector2): Vector2 = return Vector2(x: l.x + r.x,
+    y: l.y + r.y)
+proc `-`*(l: Vector2, r: Vector2): Vector2 = return Vector2(x: l.x - r.x,
+    y: l.y - r.y)
+proc `*`*(l: Vector2, r: Vector2): Vector2 = return Vector2(x: l.x * r.x,
+    y: l.y * r.y)
+proc `/`*(l: Vector2, r: Vector2): Vector2 = return Vector2(x: l.x / r.x,
+    y: l.y / r.y)
 proc dot*(l: Vector2, r: Vector2): float32 = return l.x * r.x + l.y * r.y
 
 # vec*scal
